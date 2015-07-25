@@ -1,36 +1,52 @@
-.triangular {
-  margin: 40px 0 0;
-  padding: 0px; 
+body {
+  min-height: 2000px;
+}
+.triangleswrapper {
+  border-top: 48px solid transparent;
+  border-right: 48px solid black;
+  border-bottom: 48px solid transparent;
+  border-left: 0px;
+  width: 0px;
+  height: 436px;
+  position:fixed;
+  right: 20px;
+  top: 50px;
+}
+#triangles {
+  margin: 0; 
   width: 40px;
-  background-color: white;
+  padding-left: 4px;
+  height: auto;
+  
 }
 
-.triangular > div {
+#triangles li {
   list-style-type: none;
   width: 0; 
-	height: 0; 
-	border-top: 40px solid transparent;
-	border-bottom: 40px solid transparent; 
-  margin-top:-32px;
-	
+  height: 0; 
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid transparent; 
+  margin-top:-37px;
+  
 }
 
-.triangular > div:nth-child(even) {
-  border-left: 40px solid gray; 
-  transition: 0.5s all; 
+#triangles li:nth-child(even) {
+  border-left: 40px solid white; 
+  transition: 0.1s all; 
 }
 
-.triangular > div:nth-child(odd) {
-  border-right: 40px solid gray; 
+#triangles li:nth-child(odd) {
+  border-right: 40px solid white; 
   transition: 0.5s all; 
 }
 
 .active-odd {
-  border-right: 40px solid red !important;
-  transition: 0.2s all; 
+  border-right: 40px solid orange !important;
+  transition: 0.1s all; 
 }
 
 .active-even {
-   border-left: 40px solid red !important;
-  transition: 0.2s all; 
+   border-left: 40px solid orange !important;
+   transition: 0.1s all;
+
 }

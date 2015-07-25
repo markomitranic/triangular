@@ -1,27 +1,30 @@
-(function ( $ ) {
-    $.fn.triangles = function( options ) {
-        var settings = $.extend({
-            // These are the defaults.
-            noOfTriangles: 200,
-            offsetTrigger: "30%"
-        }, options );
- 
-        for (var i = 0; i < settings.noOfTriangles; i++) {
-    $('<div>').appendTo(this);
-  }
-      var $that = $(this); 
-      $that.addClass('triangular');
-  
-        $that.children('div').waypoint({
-  handler: function(direction) {
-    var index = $that.children('div').index(this.element);
+$(document).ready(function(){
+  //set these variables
+  var noOfTriangles = 11;
+
+  //prepare calc vars and calc the animation
+  function calctri(){
+    var bodyH = $('body').height(), 
+        windowH = $(window).height(), 
+        single = (bodyH - windowH) / (noOfTriangles - 2), 
+        position = $(window).scrollTop(), 
+        index = Math.ceil(position / single );
+    
     $('.active-odd, .active-even').removeClass('active-odd active-even');
     var classToAdd = (index % 2 == 1) ? "active-even" : "active-odd";
-    $(this.element).addClass(classToAdd);
-  }, 
-   offset: settings.offsetTrigger
-  });
+    $('#triangles li').eq(index).addClass(classToAdd);
+  }
+
+  calctri();
+  $(window).on('scroll', calctri);
+
+  //draw the triangles
+  for (var i = 0; i < noOfTriangles; i++) {
+    $('<li>').appendTo('#triangles');
+  }
+  
  
-    };
- 
-}( jQuery ));
+});
+
+
+
